@@ -24,6 +24,7 @@
   "author": "Blake Johnston",
   "license": "MIT",
   "dependencies": {
+    "dateformat": "^1.0.12",
     "express": "^4.13.3",
     "mongodb": "^2.0.42"
   }

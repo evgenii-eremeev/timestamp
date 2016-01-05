@@ -1,17 +1,16 @@
 'use strict';
 
-var ClickHandler = require(process.cwd() + '/app/controllers/clickHandler.server.js');
+var Timestamp = require(process.cwd() + '/app/controllers/timestamp.server.js');
 
-module.exports = function (app, db) {
-   var clickHandler = new ClickHandler(db);
+module.exports = function (app) {
+   var timestamp = new Timestamp();
 
    app.route('/')
       .get(function (req, res) {
          res.sendFile(process.cwd() + '/public/index.html');
       });
+      
+   app.route('/:time')
+      .get(timestamp.stamp);
 
-   app.route('/api/clicks')
-      .get(clickHandler.getClicks)
-      .post(clickHandler.addClick)
-      .delete(clickHandler.resetClicks);
 };
